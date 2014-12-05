@@ -1,0 +1,8 @@
+{
+    "applicationName" : "12306MobileTrainTicket",
+    "applicationId": "v8zkyd9lovm2ekbyqk5wia46kt4o4bzv9fjpx4o5scii5r7e",
+    "applicationKey": "ypkau10weo19hbt5wudwu12q5r79rp3ohyid08ggsj9br203",
+    "global": {
+        "avVersion": "0.3.1"
+    }
+}
