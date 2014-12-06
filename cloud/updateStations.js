@@ -5,7 +5,7 @@
 var https = require('https');
 var util = require('util');
 
-function updateStations(saveStations) {
+function updateStations(saveStations, response) {
     var options = {
         host: 'kyfw.12306.cn',
         path: '/otn/resources/js/framework/station_name.js',
@@ -50,9 +50,18 @@ function updateStations(saveStations) {
                     }
                 }
 
-                console.log(allGroup);
                 //save order string
-                AV.Cloud.run(saveStations, {'stations': allGroup});
+                AV.Cloud.run(saveStations, {'stations': allGroup}, {
+                    success: function(result){
+                        response.success('success');
+                    },
+                    error: function(error){
+                        response.error('error');
+                    }
+                });
+            }
+            else{
+                response.error('error');
             }
         });
 

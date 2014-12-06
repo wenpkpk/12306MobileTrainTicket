@@ -25,6 +25,6 @@ AV.Cloud.define("saveStations", function(request, response) {
 
 AV.Cloud.define("updateStations", function(request, response){
     var fun = "saveStations";
-    updateStations.updateStations(fun);
+    updateStations.updateStations(fun, response);
 });
 
