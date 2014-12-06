@@ -1,8 +1,9 @@
 require("cloud/app.js");
-require("cloud/updateStations.js")
+var updateStations = require("cloud/updateStations.js")
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
 AV.Cloud.define("saveStations", function(request, response) {
+    console.log('into this...');
     var newStations = request.params.stations;
     if(newStations.length > 0){
         var Stations = AV.Object.extend('stations');
@@ -23,5 +24,7 @@ AV.Cloud.define("saveStations", function(request, response) {
 });
 
 AV.Cloud.define("updateStations", function(request, response){
-    updateStations("saveStations");
+    var fun = "saveStations";
+    updateStations.updateStations(fun);
 });
+

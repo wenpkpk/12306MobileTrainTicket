@@ -49,8 +49,10 @@ function updateStations(saveStations) {
                         allGroup = allGroup.concat('@');
                     }
                 }
+
+                console.log(allGroup);
                 //save order string
-                AV.Cloud.run(saveStations, {stations: allGroup});
+                AV.Cloud.run(saveStations, {'stations': allGroup});
             }
         });
 
