@@ -1,30 +1,12 @@
 require("cloud/app.js");
-var updateStations = require("cloud/updateStations.js")
+var updateStations = require("cloud/updateStations.js");
+var userLogin = require("cloud/login.js");
 // Use AV.Cloud.define to define as many cloud functions as you want.
 // For example:
-AV.Cloud.define("saveStations", function(request, response) {
-    console.log('into this...');
-    var newStations = request.params.stations;
-    if(newStations.length > 0){
-        var Stations = AV.Object.extend('stations');
-        var query = new AV.Query(Stations);
-
-        query.get('547989d6e4b00f629c08f035',{
-            success: function(stations){
-                //save
-                stations.save({
-                    stations: newStations
-                })
-            },
-            error: function (object, error) {
-
-            }
-        });
-    }
+AV.Cloud.define("updateStations", function(avRequest, avResponse){
+    updateStations.updateStations(avRequest, avResponse);
 });
 
-AV.Cloud.define("updateStations", function(request, response){
-    var fun = "saveStations";
-    updateStations.updateStations(fun, response);
+AV.Cloud.define("userLogin", function (avRequest, avResponse) {
+    userLogin.userLogin('627043744@qq.com', '3a5454719f5ccedae81775a62ddbf2e4', avRequest, avResponse);
 });
-
